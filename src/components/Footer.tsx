@@ -10,7 +10,6 @@ export default function Footer() {
       nav: 'Навигация',
       contacts: 'Контакты',
       socials: 'Мы в соцсетях',
-      links: ['Главная', 'Контакты', 'Новости', 'Отзывы'],
       address: 'г. Алматы, ул. Жарокова 24',
       rights: 'Все права защищены.',
     },
@@ -19,7 +18,6 @@ export default function Footer() {
       nav: 'Навигация',
       contacts: 'Байланыс',
       socials: 'Әлеуметтік желілер',
-      links: ['Басты бет', 'Контакты', 'Новости', 'Отзывы'],
       address: 'Алматы қ., Жарокова к-сі 24',
       rights: 'Барлық құқықтар қорғалған.',
     },
@@ -28,7 +26,6 @@ export default function Footer() {
       nav: 'Navigation',
       contacts: 'Contacts',
       socials: 'Social Media',
-      links: ['Home', 'Contacts', 'News', 'Reviews'],
       address: '24 Zharokova St., Almaty',
       rights: 'All rights reserved.',
     }
@@ -48,7 +45,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className={`w-full border-t transition-colors duration-300 ${
+    <footer className={`w-full border-t transition-colors duration-100 ${
       theme === 'light' ? 'bg-white border-blue-100 text-slate-600' : 'bg-slate-950 border-slate-800 text-slate-400'
     }`}>
       <div className="max-w-7xl mx-auto px-6 py-12">
@@ -57,9 +54,6 @@ export default function Footer() {
           {/* О лицее */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white font-bold shadow-lg shadow-blue-500/20">
-                134
-              </div>
               <span className={`text-xl font-bold ${theme === 'light' ? 'text-slate-900' : 'text-white'}`}>
                 Liceum 134
               </span>
@@ -67,45 +61,6 @@ export default function Footer() {
             <p className="text-sm leading-relaxed italic">
               {t.about}
             </p>
-          </div>
-
-          {/* Навигация в Футере */}
-          <div className="pl-0 md:pl-15">
-            <h3 className={`font-bold mb-4 ${theme === 'light' ? 'text-slate-900' : 'text-white'}`}>
-              {t.nav}
-            </h3>
-            <ul className="space-y-2 text-sm">
-              {/* Массив объектов с названиями и ID секций */}
-              {[
-                { name: t.links[0], id: 'hero' },    // Главная
-                { name: t.links[1], id: 'about' }, // Контакты
-                { name: t.links[2], id: 'news' },    // Новости
-                { name: t.links[3], id: 'reviews' }   // Отзывы
-              ].map((item) => (
-                <li key={item.id}>
-                  <button
-                    onClick={() => {
-                      const element = document.getElementById(item.id);
-                      if (element) {
-                        const offset = 80;
-                        const bodyRect = document.body.getBoundingClientRect().top;
-                        const elementRect = element.getBoundingClientRect().top;
-                        const elementPosition = elementRect - bodyRect;
-                        const offsetPosition = elementPosition - offset;
-
-                        window.scrollTo({
-                          top: offsetPosition,
-                          behavior: 'smooth'
-                        });
-                      }
-                    }}
-                    className="hover:text-blue-500 transition-colors flex items-center gap-1 bg-transparent border-none p-0 cursor-pointer text-left"
-                  >
-                    {item.name}
-                  </button>
-                </li>
-              ))}
-            </ul>
           </div>
 
           {/* Контакты */}

@@ -1,6 +1,7 @@
 export const newsData = [
   {
     id: 1,
+    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80',
     date: '25.04.2026',
     title: {
       ru: 'Победа в олимпиаде',
@@ -15,6 +16,7 @@ export const newsData = [
   },
   {
     id: 2,
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80',
     date: '10.05.2026',
     title: {
       ru: 'День открытых дверей',
@@ -27,34 +29,4 @@ export const newsData = [
       en: 'We invite future applicants and their parents.'
     }
   }
-];
-
-export const reviewsData = [
-  {
-    id: 1,
-    name: 'Алишер',
-    text: {
-      ru: 'Лучший лицей в Алматы! Сильная математика.',
-      kz: 'Алматыдағы ең үздік лицей! Математикасы мықты.',
-      en: 'The best lyceum in Almaty! Strong math program.'
-    }
-  },
-  {
-    id: 2,
-    name: 'Мурат',
-    text: {
-      ru: 'Евгеша крутой.',
-      kz: 'Евгеша мықты.',
-      en: 'Евгеша is cool.'
-    }
-  },
-  {
-    id: 3,
-    name: 'Самен',
-    text: {
-      ru: 'Газ газ',
-      kz: 'Газ газ',
-      en: 'Gas gas'
-    }
-  },
 ];
