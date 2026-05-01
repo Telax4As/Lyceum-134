@@ -62,7 +62,7 @@ const HomePage: React.FC = () => {
     }`}>
       
       {/* --- HERO BLOCK --- */}
-      <section className="relative overflow-hidden py-24 px-6">
+      <section id='hero' className="relative overflow-hidden py-24 px-6">
         <div className="max-w-7xl mx-auto text-center relative z-10">
           <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-400">
@@ -79,7 +79,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* --- NEW: ABOUT / STATS SECTION --- */}
-      <section className="py-12 px-6 max-w-7xl mx-auto">
+      <section id='about' className="py-12 px-6 max-w-7xl mx-auto">
         <div className={`p-8 md:p-12 rounded-[2.5rem] border transition-all ${
           theme === 'light' 
           ? 'bg-white border-blue-100 shadow-sm' 
@@ -110,7 +110,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* --- NEWS FEED --- */}
-      <section className="py-20 px-6 max-w-7xl mx-auto">
+      <section id='news' className="py-20 px-6 max-w-7xl mx-auto">
         <div className="flex items-center gap-3 mb-12">
           <div className="p-2 bg-blue-600 rounded-lg text-white">
             <Newspaper size={24} />
@@ -140,7 +140,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* --- REVIEWS SECTION --- */}
-      <section className={`py-16 px-6 ${theme === 'light' ? 'bg-blue-50/50' : 'bg-slate-900/40'}`}>
+      <section id='reviews' className={`py-16 px-6 ${theme === 'light' ? 'bg-blue-50/50' : 'bg-slate-900/40'}`}>
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-3 mb-12 justify-center">
             <MessageSquare className="text-blue-500" />

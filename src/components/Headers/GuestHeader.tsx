@@ -1,5 +1,6 @@
 import { useAppStore } from '../../store/useAppStore';
 import { Sun, Moon, Globe, LogIn } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function GuestHeader() {
   // Извлекаем данные и функции именно так, как они называются в твоем AppState
@@ -7,9 +8,9 @@ export default function GuestHeader() {
 
   // Ключи теперь в нижнем регистре, чтобы соответствовать стору: 'ru' | 'kz' | 'en'
   const content = {
-    ru: { news: 'Новости', reviews: 'Отзывы', login: 'Вход', title: 'Лицей №134' },
-    kz: { news: 'Жаңалықтар', reviews: 'Пікірлер', login: 'Кіру', title: '№134 Лицей' },
-    en: { news: 'News', reviews: 'Reviews', login: 'Login', title: 'Lyceum №134' },
+    ru: { about: 'О нас', news: 'Новости', reviews: 'Отзывы', login: 'Вход', title: 'Лицей №134' },
+    kz: { about: 'Біз туралы', news: 'Жаңалықтар', reviews: 'Пікірлер', login: 'Кіру', title: '№134 Лицей' },
+    en: { about: 'About Us', news: 'News', reviews: 'Reviews', login: 'Login', title: 'Lyceum №134' },
   };
 
   // Динамически получаем контент на основе текущего языка
@@ -18,6 +19,24 @@ export default function GuestHeader() {
   // Функция для удобного переключения темы
   const handleThemeToggle = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
+  // Функция для плавного скролла
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      // Вычисляем отступ, чтобы хедер не перекрывал заголовок секции
+      const offset = 80; 
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
   };
 
   return (
@@ -29,17 +48,35 @@ export default function GuestHeader() {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         
         {/* Логотип */}
-        <div className="flex items-center gap-3 cursor-pointer">
+        <Link 
+          to='/' 
+          className="flex items-center gap-3 cursor-pointer"
+          onClick={(e) => {
+            // Если мы уже на главной странице, отменяем стандартный переход и скроллим
+            if (window.location.pathname === '/') {
+              e.preventDefault();
+              // Используем твою же функцию scrollToSection
+              scrollToSection('hero'); 
+            }
+          }}
+        >
           <span className="font-bold text-xl tracking-tight hidden md:block">
             {t.title}
           </span>
-        </div>
+        </Link>
 
         <nav className="flex items-center gap-8">
           {/* Навигация */}
           <ul className="hidden md:flex items-center gap-6 font-medium">
-            <li className="hover:text-blue-500 transition-colors cursor-pointer">{t.news}</li>
-            <li className="hover:text-blue-500 transition-colors cursor-pointer">{t.reviews}</li>
+            <li className="hover:text-blue-500 transition-colors cursor-pointer" onClick={() => scrollToSection('about')}>
+              {t.about}
+            </li>
+            <li className="hover:text-blue-500 transition-colors cursor-pointer" onClick={() => scrollToSection('news')}>
+              {t.news}
+            </li>
+            <li className="hover:text-blue-500 transition-colors cursor-pointer" onClick={() => scrollToSection('reviews')}>
+              {t.reviews}
+            </li>
           </ul>
 
           <div className="h-6 w-[1px] bg-blue-200 hidden md:block" />

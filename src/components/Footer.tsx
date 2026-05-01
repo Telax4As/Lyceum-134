@@ -1,5 +1,5 @@
 import { useAppStore } from '../store/useAppStore';
-import { Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 
 export default function Footer() {
   const { theme, language } = useAppStore();
@@ -10,7 +10,7 @@ export default function Footer() {
       nav: 'Навигация',
       contacts: 'Контакты',
       socials: 'Мы в соцсетях',
-      links: ['Главная', 'Новости', 'Отзывы', 'Контакты'],
+      links: ['Главная', 'Контакты', 'Новости', 'Отзывы'],
       address: 'г. Алматы, ул. Жарокова 24',
       rights: 'Все права защищены.',
     },
@@ -19,7 +19,7 @@ export default function Footer() {
       nav: 'Навигация',
       contacts: 'Байланыс',
       socials: 'Әлеуметтік желілер',
-      links: ['Басты бет', 'Жаңалықтар', 'Пікірлер', 'Байланыс'],
+      links: ['Басты бет', 'Контакты', 'Новости', 'Отзывы'],
       address: 'Алматы қ., Жарокова к-сі 24',
       rights: 'Барлық құқықтар қорғалған.',
     },
@@ -28,7 +28,7 @@ export default function Footer() {
       nav: 'Navigation',
       contacts: 'Contacts',
       socials: 'Social Media',
-      links: ['Home', 'News', 'Reviews', 'Contacts'],
+      links: ['Home', 'Contacts', 'News', 'Reviews'],
       address: '24 Zharokova St., Almaty',
       rights: 'All rights reserved.',
     }
@@ -69,15 +69,40 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Навигация */}
-          <div className={`pl-15`}>
-            <h3 className={`font-bold mb-4 ${theme === 'light' ? 'text-slate-900' : 'text-white'}`}>{t.nav}</h3>
+          {/* Навигация в Футере */}
+          <div className="pl-0 md:pl-15">
+            <h3 className={`font-bold mb-4 ${theme === 'light' ? 'text-slate-900' : 'text-white'}`}>
+              {t.nav}
+            </h3>
             <ul className="space-y-2 text-sm">
-              {t.links.map((link) => (
-                <li key={link}>
-                  <a href="#" className="hover:text-blue-500 transition-colors flex items-center gap-1">
-                    {link} <ExternalLink size={12} className="opacity-0 group-hover:opacity-100" />
-                  </a>
+              {/* Массив объектов с названиями и ID секций */}
+              {[
+                { name: t.links[0], id: 'hero' },    // Главная
+                { name: t.links[1], id: 'about' }, // Контакты
+                { name: t.links[2], id: 'news' },    // Новости
+                { name: t.links[3], id: 'reviews' }   // Отзывы
+              ].map((item) => (
+                <li key={item.id}>
+                  <button
+                    onClick={() => {
+                      const element = document.getElementById(item.id);
+                      if (element) {
+                        const offset = 80;
+                        const bodyRect = document.body.getBoundingClientRect().top;
+                        const elementRect = element.getBoundingClientRect().top;
+                        const elementPosition = elementRect - bodyRect;
+                        const offsetPosition = elementPosition - offset;
+
+                        window.scrollTo({
+                          top: offsetPosition,
+                          behavior: 'smooth'
+                        });
+                      }
+                    }}
+                    className="hover:text-blue-500 transition-colors flex items-center gap-1 bg-transparent border-none p-0 cursor-pointer text-left"
+                  >
+                    {item.name}
+                  </button>
                 </li>
               ))}
             </ul>
