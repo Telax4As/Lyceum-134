@@ -1,8 +1,10 @@
 import { useAppStore } from '../../store/useAppStore';
 import { LogOut, Moon, Sun } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export default function ProfileForStudents() {
-  const { theme, setTheme, language, setLanguage, role } = useAppStore();
+  const { theme, setTheme, language, setLanguage, role, setRole } = useAppStore();
+  const navigate = useNavigate();
 
   const userData = {
     fullName: "Димаш", //
@@ -17,6 +19,11 @@ export default function ProfileForStudents() {
     kz: { appearance: "Тақырып", language: "Тіл", logout: "Шығу", settings: "Баптаулар", info: "Жеке мәліметтер" },
     en: { appearance: "Theme", language: "Language", logout: "Log Out", settings: "Settings", info: "Personal Info" }
   }[language] || { appearance: "Тема", language: "Язык", logout: "Выйти", settings: "Настройки", info: "Личные данные" };
+
+  const logout = () => {
+    setRole('guest');
+    navigate('/login');
+  }
 
   return (
     <main className={`min-h-screen w-full pt-16 md:pt-24 pb-12 transition-colors duration-300 ${
@@ -103,7 +110,9 @@ export default function ProfileForStudents() {
 
           {/* Кнопка выхода */}
           <div className="pt-4">
-            <button className="w-full py-5 rounded-2xl flex items-center justify-center gap-2 text-red-500 font-bold text-sm hover:bg-red-500/5 transition-all border border-transparent hover:border-red-500/10">
+            <button   
+              onClick={() => logout()}
+              className="w-full py-5 rounded-2xl flex items-center justify-center gap-2 text-red-500 font-bold text-sm hover:bg-red-500/5 transition-all border border-transparent hover:border-red-500/10">
               <LogOut size={18} />
               {t.logout}
             </button>

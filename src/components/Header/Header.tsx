@@ -115,6 +115,9 @@ export default function GuestHeader() {
                 theme === 'light' ? 'bg-slate-900' : 'bg-white'
               } ${isOpen ? '-rotate-45 -translate-y-1.5' : ''}`} />
             </button>
+            <div className="hidden min-[768px]:block">
+              {role === 'guest' ? <LoginBtn /> : <ProfileBtn />}
+            </div>
           </div>
         </div>
       </header>
@@ -123,7 +126,7 @@ export default function GuestHeader() {
       <div className={`
         fixed inset-0 z-[55] md:hidden transition-all duration-500
         ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}
-      `}>
+        `}>
         {/* Оверлей (Прозрачный, только для закрытия по клику вне меню) */}
         <div 
           className="absolute inset-0 bg-transparent" 
@@ -137,7 +140,7 @@ export default function GuestHeader() {
           ${theme === 'light' 
             ? 'bg-white border-sky-100 text-slate-900' 
             : 'bg-[#0b0f1a] border-slate-800/60 text-slate-100'}
-        `}>
+          `}>
           <nav className="space-y-4">
             {navLinks.map((link) => (
               <Link

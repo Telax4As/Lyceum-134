@@ -55,7 +55,7 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <span className={`text-xl font-bold ${theme === 'light' ? 'text-slate-900' : 'text-white'}`}>
-                Liceum 134
+                Lyceum 134
               </span>
             </div>
             <p className="text-sm leading-relaxed italic">
