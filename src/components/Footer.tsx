@@ -105,7 +105,7 @@ export default function Footer() {
         <div className={`mt-12 pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-bold uppercase tracking-[0.2em] ${
           theme === 'light' ? 'border-slate-100 text-slate-400' : 'border-slate-900 text-slate-600'
         }`}>
-          <p>© {currentYear} Liceum №134. {t.rights}</p>
+          <p>© {currentYear} Lyceum №134. {t.rights}</p>
           <div className="flex gap-8">
             <a href="#" className="hover:text-blue-500 transition-colors tracking-widest">Privacy</a>
             <a href="#" className="hover:text-blue-500 transition-colors tracking-widest">Rules</a>
