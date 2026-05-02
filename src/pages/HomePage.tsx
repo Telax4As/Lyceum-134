@@ -5,7 +5,7 @@ import { newsData } from '../Data';
 import { ArrowRight, Newspaper, GraduationCap, Users, BookOpen } from 'lucide-react';
 
 const HomePage: React.FC = () => {
-  const { setRole, theme, language } = useAppStore();
+  const { theme, language } = useAppStore();
   const navigate = useNavigate();
 
   const pageContent = {

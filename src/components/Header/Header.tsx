@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useAppStore } from '../../store/useAppStore';
 import { Sun, Moon, Globe, GraduationCap } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';

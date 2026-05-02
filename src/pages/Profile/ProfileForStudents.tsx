@@ -8,7 +8,6 @@ import {
   Mail, 
   Moon, 
   Sun, 
-  Languages 
 } from 'lucide-react';
 
 export default function ProfileForStudents() {
