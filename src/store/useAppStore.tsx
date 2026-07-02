@@ -1,7 +1,11 @@
 import { create } from 'zustand';
-import { persist, createJSONStorage } from 'zustand/middleware';
+import { persist } from 'zustand/middleware';
 
 interface AppState {
+
+  uid: string | null;
+  setUid: (uid: string | null) => void;
+
   role: 'guest' | 'student' | 'teacher' | 'admin';
   setRole: (role: 'guest' | 'student' | 'teacher' | 'admin') => void;
 
@@ -10,26 +14,26 @@ interface AppState {
 
   language: 'ru' | 'kz' | 'en';
   setLanguage: (language: 'ru' | 'kz' | 'en') => void;
+
+  email: string | undefined;
+  setEmail: (email: string | undefined) => void;
 }
 
 export const useAppStore = create<AppState>()(
   persist(
     (set) => ({
       // Дефолтные значения
+      uid: null,
       role: 'guest',
       theme: 'light',
       language: 'ru',
+      email: undefined,
 
+      setUid: (uid) => set({ uid }),
       setRole: (role) => set({ role }),
+      setEmail: (email) => set({ email }),
 
       setTheme: (theme) => {
-        // Мгновенное обновление DOM для Tailwind dark: классов
-        const root = window.document.documentElement;
-        if (theme === 'dark') {
-          root.classList.add('dark');
-        } else {
-          root.classList.remove('dark');
-        }
         set({ theme });
       },
 
@@ -37,15 +41,6 @@ export const useAppStore = create<AppState>()(
     }),
     {
       name: 'app-storage', // Ключ в LocalStorage
-      storage: createJSONStorage(() => localStorage),
-      // Эта часть отвечает за то, чтобы при загрузке страницы тема применилась сразу
-      onRehydrateStorage: () => (state) => {
-        if (state?.theme === 'dark') {
-          window.document.documentElement.classList.add('dark');
-        } else {
-          window.document.documentElement.classList.remove('dark');
-        }
-      },
     }
   )
 );

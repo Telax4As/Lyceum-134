@@ -1,21 +1,10 @@
 import { Link } from 'react-router-dom';
-import { useAppStore } from '../../store/useAppStore';
 
-export const ProfileBtn = () => {
-    // Достаем тему, язык и данные пользователя (например, имя)
-    const { theme, language } = useAppStore();
-
-    const content = {
-        ru: { profile: 'Профиль' },
-        kz: { profile: 'Профиль' },
-        en: { profile: 'Profile' },
-    };
-
-    const t = content[language];
+export function ProfileBtn({theme, profile}: {theme: string, profile: string}){
 
     return (
         <Link to="/profile" className={`
-            flex items-center h-10 gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-all active:scale-95
+            flex items-center h-10 gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-all active:scale-95 duration-100
             ${theme === 'light' 
                 ? 'bg-slate-100 text-slate-700 hover:bg-slate-200' 
                 : 'bg-slate-800 text-slate-100 hover:bg-slate-700'}
@@ -28,7 +17,7 @@ export const ProfileBtn = () => {
             </svg>
 
             {/* Отображаем имя пользователя или просто слово "Профиль" */}
-            <span>{t.profile}</span>
+            <span>{profile}</span>
         </Link>
     );
 };

@@ -54,7 +54,8 @@ export default function Footer() {
           {/* О лицее */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <span className={`text-xl font-bold ${theme === 'light' ? 'text-slate-900' : 'text-white'}`}>
+              <span className={`text-xl font-bold 
+                ${theme === 'light' ? 'text-slate-900' : 'text-white'}`}>
                 Lyceum 134
               </span>
             </div>
@@ -65,7 +66,8 @@ export default function Footer() {
 
           {/* Контакты */}
           <div>
-            <h3 className={`font-bold mb-4 ${theme === 'light' ? 'text-slate-900' : 'text-white'}`}>{t.contacts}</h3>
+            <h3 className={`font-bold mb-4 
+              ${theme === 'light' ? 'text-slate-900' : 'text-white'}`}>{t.contacts}</h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-3">
                 <Phone size={16} className="text-blue-500" />
@@ -84,15 +86,16 @@ export default function Footer() {
 
           {/* Соцсети */}
           <div>
-            <h3 className={`font-bold mb-4 ${theme === 'light' ? 'text-slate-900' : 'text-white'}`}>{t.socials}</h3>
+            <h3 className={`font-bold mb-4 
+              ${theme === 'light' ? 'text-slate-900' : 'text-white'}`}>{t.socials}</h3>
             <div className="flex gap-3">
-              <a href="#" className={`p-2.5 rounded-xl transition-all ${
-                theme === 'light' ? 'bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white' : 'bg-slate-900 text-blue-400 hover:bg-blue-600 hover:text-white'
+              <a href="#" className={`p-2.5 rounded-xl transition-all duration-100
+                ${theme === 'light' ? 'bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white' : 'bg-slate-900 text-blue-400 hover:bg-blue-600 hover:text-white'
               }`}>
                 <SocialIcons.Instagram />
               </a>
-              <a href="#" className={`p-2.5 rounded-xl transition-all ${
-                theme === 'light' ? 'bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white' : 'bg-slate-900 text-blue-400 hover:bg-blue-600 hover:text-white'
+              <a href="#" className={`p-2.5 rounded-xl transition-all duration-100
+                ${theme === 'light' ? 'bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white' : 'bg-slate-900 text-blue-400 hover:bg-blue-600 hover:text-white'
               }`}>
                 <SocialIcons.Facebook />
               </a>
@@ -102,8 +105,8 @@ export default function Footer() {
         </div>
 
         {/* Подвал */}
-        <div className={`mt-12 pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-bold uppercase tracking-[0.2em] ${
-          theme === 'light' ? 'border-slate-100 text-slate-400' : 'border-slate-900 text-slate-600'
+        <div className={`mt-12 pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-bold uppercase tracking-[0.2em] duration-100
+          ${theme === 'light' ? 'border-slate-100 text-slate-400' : 'border-slate-900 text-slate-600'
         }`}>
           <p>© {currentYear} Lyceum №134. {t.rights}</p>
           <div className="flex gap-8">

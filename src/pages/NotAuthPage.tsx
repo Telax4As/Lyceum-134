@@ -26,12 +26,12 @@ const NotAuth = () => {
 
     return (
         <div className={`
-            min-h-[80vh] flex flex-col items-center justify-center px-4 text-center w-screen
+            duration-100 min-h-[80vh] flex flex-col items-center justify-center px-4 text-center w-screen
             ${theme === 'light' ? 'bg-white text-slate-900' : 'bg-slate-950 text-slate-100'}
         `}>
             {/* Иконка замка */}
             <div className={`
-                mb-6 p-6 rounded-full 
+                mb-6 p-6 rounded-full duration-100
                 ${theme === 'light' ? 'bg-sky-50 text-sky-500' : 'bg-sky-950/30 text-sky-400'}
             `}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

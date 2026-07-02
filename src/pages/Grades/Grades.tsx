@@ -1,4 +1,4 @@
-import NotAuth from "../../components/NotAuth";
+import NotAuth from "../NotAuthPage";
 import { useAppStore } from "../../store/useAppStore";
 import GradesForStudents from "./GradesForStudents";
 import GradesForTeachers from "./GradesForTeachers";
