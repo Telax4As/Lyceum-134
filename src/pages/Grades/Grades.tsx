@@ -10,7 +10,7 @@ export default function Grades() {
         <div className="flex items-center justify-center">
             {role === 'guest' && <NotAuth />}
             {role === 'student' && <GradesForStudents />}
-            {role === 'teacher' || role === 'admin' && <GradesForTeachers />}
+            {(role === 'teacher' || role === 'admin') && <GradesForTeachers />}
         </div>
     )
 }

@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useAppStore } from '../../store/useAppStore';
 import { Newspaper } from 'lucide-react';
 
-import { content } from './datas/HomePageContent';
-import { newsData } from './datas/NewsData';
+import { content } from './data/HomePageContent';
+import { newsData } from './data/NewsData';
 
 import { StatCard } from './ui/StatCard';
 import { NewsCard } from './ui/NewsCard';
@@ -22,9 +22,9 @@ const HomePage: React.FC = () => {
     }`}>
       
       {/* 1. HERO SECTION */}
-      <section className="relative pt-30 pb-19 md:pt-42 md:pb-34 px-6 overflow-hidden">
+      <section className="relative pt-30 pb-19 md:pt-42 md:pb-33 px-6 overflow-hidden">
         <div className="max-w-6xl mx-auto flex flex-col items-center relative z-10">
-          <div className={`duration-100 absolute top-[-20%] left-1/2 -translate-x-1/2 w-[300px] md:w-[600px] h-[200px] md:h-[300px] blur-[80px] md:blur-[120px] rounded-full opacity-30 -z-10 ${
+          <div className={`duration-100 absolute top-[-20%] left-1/2 -translate-x-1/2 w-[300px] md:w-[600px] h-[150px] md:h-[250px] blur-[80px] md:blur-[120px] rounded-full opacity-30 -z-10 ${
             theme === 'light' ? 'bg-sky-300' : 'bg-blue-600/20'
           }`} />  
 

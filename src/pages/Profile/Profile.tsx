@@ -4,20 +4,17 @@ import { useNavigate } from 'react-router-dom';
 import { useProfile } from './hooks/useProfile';
 import { Error } from '../ErrorPage';
 
+import { content } from './data/ProfilePageContent';
+
 export default function ProfileForStudents() {
   const { theme, setTheme, language, setLanguage, setRole, email, setUid, setEmail } = useAppStore();
   const navigate = useNavigate();
 
-  // Достаем isLoading и error из хука
-  const { data: Data, error: profileError } = useProfile();
-
-  const content = {
-    ru: { appearance: "Тема", unknown: 'Неизвестно', loading: "Грузится...", language: "Язык", school: "Лицей №134", logout: "Выйти", settings: "Настройки", info: "Личные данные",  errTitle: "Ошибка загрузки" },
-    kz: { appearance: "Тақырып", unknown: 'Білмейтін', loading: "Жүктелуде...", language: "Тіл", school: "Лицей №134", logout: "Шығу", settings: "Баптаулар", info: "Жеке мәліметтер", errTitle: "Жүктеу қатесі" },
-    en: { appearance: "Theme", unknown: 'Unknown', loading: "Loading...", language: "Language", school: "High School No. 134", logout: "Log Out", settings: "Settings", info: "Personal Info", errTitle: "Loading error" }
-  }
 
   const t = content[language];
+
+
+  const { data: Data, error: profileError } = useProfile();
 
   const userData = Data 
     ? {
@@ -30,7 +27,6 @@ export default function ProfileForStudents() {
       role: t.loading,
       avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=smartNiggas`,
     }; 
-
   const userEmail = email || t.unknown;
 
 
@@ -51,7 +47,6 @@ export default function ProfileForStudents() {
       theme === 'light' ? 'bg-white text-slate-900' : 'bg-[#0b0f1a] text-slate-100'
     }`}>
       <div className="max-w-2xl mx-auto px-4 sm:px-6">
-        {/* 3. ОСНОВНОЙ ИНТЕРФЕЙС */}
         {userData && (
           <>
             {/* Адаптивный Header */}
@@ -107,7 +102,7 @@ export default function ProfileForStudents() {
                   <button 
                     onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
                     className={`w-full flex items-center justify-between p-5 md:p-6 transition-colors ${
-                      theme === 'light' ? 'hover:bg-black/5' : 'hover:bg-white/5'
+                      theme === 'light' ? 'hover:bg-black/3' : 'hover:bg-white/3'
                     }`}
                   >
                     <div className="flex items-center gap-3">
@@ -153,7 +148,7 @@ export default function ProfileForStudents() {
 
               {/* Кнопка выхода */}
               <div className="pt-4">
-                <button   
+                <button           
                   onClick={() => logout()}
                   className={`w-full py-5 rounded-2xl flex items-center justify-center gap-2 text-red-500 font-bold text-sm transition-all border border-transparent ${
                     theme === 'light' ? 'hover:bg-red-50' : 'hover:bg-red-500/5 hover:border-red-500/10'
