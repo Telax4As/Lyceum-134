@@ -17,6 +17,12 @@ interface AppState {
 
   email: string | undefined;
   setEmail: (email: string | undefined) => void;
+
+  currentDay: string;
+  setDay: (day: string) => void;
+
+  selectedClass: number;
+  setSelectedClass: (classId: number) => void;
 }
 
 export const useAppStore = create<AppState>()(
@@ -28,19 +34,19 @@ export const useAppStore = create<AppState>()(
       theme: 'light',
       language: 'ru',
       email: undefined,
+      currentDay: "Понедельник",
+      selectedClass: 1,
 
       setUid: (uid) => set({ uid }),
       setRole: (role) => set({ role }),
       setEmail: (email) => set({ email }),
-
-      setTheme: (theme) => {
-        set({ theme });
-      },
-
+      setDay: (day) => set({ currentDay: day }),
+      setSelectedClass: (classId) => set({ selectedClass: classId }),
+      setTheme: (theme) => {set({ theme });},
       setLanguage: (language) => set({ language }),
     }),
     {
       name: 'app-storage', // Ключ в LocalStorage
     }
   )
-);
+);    
