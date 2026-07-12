@@ -15,30 +15,32 @@ export interface Lesson {
   time?: string;     // Опционально, если будешь добавлять время уроков
 }
 
-const fetchTodaySchedule = async (classId: number, day: string): Promise<Lesson[]> => {
+const fetchSchedule = async (classId: number, day: string): Promise<Lesson[]> => {
   const { data, error } = await supabase
     .from('schedule')
     .select(`
+      id,
       lessonNum,
-      room,
-      subjects ( name )
+      room
     `) 
     .eq('class_id', classId)
     .eq('dayOfWeek', day)
     .order('lessonNum', { ascending: true });
 
+  console.log('Fetched schedule data:', data);
+
   if (error) {
     throw new Error(error.message);
   }
 
-  // Честное приведение типов
   return (data as unknown as Lesson[]) || [];
 };
+
 
 export const useSchedule = (classId: number, day: string) => {
   return useQuery({
     queryKey: ['schedule',  classId, day],
-    queryFn: () => fetchTodaySchedule(classId, day),
+    queryFn: () => fetchSchedule(classId, day),
     // Если classId равен 0 или undefined, запрос не пойдет
     enabled: Boolean(classId), 
   });

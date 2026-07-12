@@ -2,71 +2,8 @@ import { useAppStore } from '../../store/useAppStore';
 import { useSchedule } from './hooks/useSchedule'; 
 import { Error } from '../ErrorPage';
 import { Calendar, Clock, BookOpen, MapPin } from 'lucide-react';
+import { content, AVAILABLE_CLASSES, lessTime } from '../Data_for_grades&schedule'
 
-// Текст и локализация (без учителей)
-const content = {
-  ru: {
-    title: 'Расписание занятий',
-    loading: 'Загрузка расписания...',
-    errTitle: 'Ошибка загрузки',
-    noLessons: 'В этот день занятий нет',
-    room: 'Каб.',
-    days: [
-      { id: 'Понедельник', label: 'Пн' },
-      { id: 'Вторник', label: 'Вт' },
-      { id: 'Среда', label: 'Ср' },
-      { id: 'Четверг', label: 'Чт' },
-      { id: 'Пятница', label: 'Пт' },
-    ]
-  },
-  kz: {
-    title: 'Сабақ кестесі',
-    loading: 'Кесте жүктелуде...',
-    errTitle: 'Жүктеу қатесі',
-    noLessons: 'Бұл күнге сабақ жоқ',
-    room: 'Каб.',
-    days: [
-      { id: 'Понедельник', label: 'Дс' },
-      { id: 'Вторник', label: 'Сс' },
-      { id: 'Среда', label: 'Ср' },
-      { id: 'Четверг', label: 'Бс' },
-      { id: 'Пятница', label: 'Жм' },
-    ]
-  },
-  en: {
-    title: 'Schedule',
-    loading: 'Loading schedule...',
-    errTitle: 'Loading error',
-    noLessons: 'No lessons on this day',
-    room: 'Room',
-    days: [
-      { id: 'Понедельник', label: 'Mon' },
-      { id: 'Вторник', label: 'Tue' },
-      { id: 'Среда', label: 'Wed' },
-      { id: 'Четверг', label: 'Thu' },
-      { id: 'Пятница', label: 'Fri' },
-    ]
-  }
-};
-
-const AVAILABLE_CLASSES = [
-  { id: 1, name: '11А' },
-  { id: 2, name: '11Б' },
-  { id: 3, name: '11В' },
-  { id: 4, name: '11Г' },
-];
-
-const lessTime: Record<number, string> = {
-  1: '08:05 - 08:50',
-  2: '08:55 - 09:40',
-  3: '09:55 - 10:40',
-  4: '10:45 - 11:30',
-  5: '11:45 - 12:30',
-  6: '12:35 - 13:20',
-  7: '13:25 - 14:10',
-  8: '14:25 - 15:10',
-  9: '15:15 - 16:00',
-}
 
 export default function SchedulePage() {
   const { theme, language, currentDay, setDay, selectedClass, setSelectedClass } = useAppStore();
@@ -140,9 +77,9 @@ export default function SchedulePage() {
               {t.loading}
             </div>
           ) : lessons && lessons.length > 0 ? (
-            lessons.map((lesson: any, index: number) => (
+            lessons.map((lesson: any) => (
               <div 
-                key={lesson.id || index}
+                key={lesson.id}
                 className={`p-5 rounded-2xl border transition-all duration-100 flex items-center justify-between gap-4 ${
                   theme === 'light' 
                     ? 'bg-slate-50/50 border-slate-100 hover:bg-slate-50' 

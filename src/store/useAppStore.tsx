@@ -23,6 +23,9 @@ interface AppState {
 
   selectedClass: number;
   setSelectedClass: (classId: number) => void;
+
+  teacherSubject?: string;
+  setTeacherSubject: (subject: string) => void;
 }
 
 export const useAppStore = create<AppState>()(
@@ -36,6 +39,7 @@ export const useAppStore = create<AppState>()(
       email: undefined,
       currentDay: "Понедельник",
       selectedClass: 1,
+      teacherSubject: "Алгебра",
 
       setUid: (uid) => set({ uid }),
       setRole: (role) => set({ role }),
@@ -44,6 +48,7 @@ export const useAppStore = create<AppState>()(
       setSelectedClass: (classId) => set({ selectedClass: classId }),
       setTheme: (theme) => {set({ theme });},
       setLanguage: (language) => set({ language }),
+      setTeacherSubject: (subject) => set({ teacherSubject: subject }),
     }),
     {
       name: 'app-storage', // Ключ в LocalStorage
